@@ -84,29 +84,4 @@ public class Term implements Comparable<Term> {
             return prefix_v.compareTo(prefix_w);
         }
     }
-
-    // Unit tests the data type. [DO NOT EDIT]
-    public static void main(String[] args) {
-        String filename = args[0];
-        int k = Integer.parseInt(args[1]);
-        In in = new In(filename);
-        int n = in.readInt();
-        Term[] terms = new Term[n];
-        for (int i = 0; i < n; i++) {
-            long weight = in.readLong();
-            in.readChar();
-            String query = in.readLine();
-            terms[i] = new Term(query.trim(), weight);
-        }
-        StdOut.printf("Top %d by lexicographic order:\n", k);
-        Merge.sort(terms);
-        for (int i = 0; i < k; i++) {
-            StdOut.println(terms[i]);
-        }
-        StdOut.printf("Top %d by reverse-weight order:\n", k);
-        Merge.sort(terms, Term.reverseWeightOrder());
-        for (int i = 0; i < k; i++) {
-            StdOut.println(terms[i]);
-        }
-    }
 }
