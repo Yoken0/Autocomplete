@@ -69,28 +69,4 @@ public class BinarySearchDeluxe {
     }
     return index;
 }
-
-    // Unit tests the library. [DO NOT EDIT]
-    public static void main(String[] args) {
-        String filename = args[0];
-        String prefix = args[1];
-        In in = new In(filename);
-        int n = in.readInt();
-        Term[] terms = new Term[n];
-        for (int i = 0; i < n; i++) {
-            long weight = in.readLong();
-            in.readChar();
-            String query = in.readLine();
-            terms[i] = new Term(query.trim(), weight);
-        }
-        Merge.sort(terms);
-        Term term = new Term(prefix);
-        Comparator<Term> prefixOrder = Term.prefixOrder(prefix.length());
-        int i = BinarySearchDeluxe.firstIndexOf(terms, term, prefixOrder);
-        int j = BinarySearchDeluxe.lastIndexOf(terms, term, prefixOrder);
-        int count = i == -1 && j == -1 ? 0 : j - i + 1;
-        StdOut.println("firstIndexOf(" + prefix + ") = " + i);
-        StdOut.println("lastIndexOf(" + prefix + ")  = " + j);
-        StdOut.println("frequency(" + prefix + ")    = " + count);
-    }
 }
